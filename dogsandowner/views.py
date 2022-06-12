@@ -15,7 +15,3 @@ class DogsandownerView(View):
           owner = Owner.objects.create(name=data["owner_name"])
 
           return JsonResponse({"message" : "댕댕이 등록완료"}, status = 201)
-
-# Create your views here.
-
-
