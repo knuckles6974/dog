@@ -10,7 +10,7 @@ class DogsandownerView(View):
     def post(self, request):
           data = json.loads(request.body)
 
-          dog = Owner.objects.create(name=data["dog_name"])
+          dog = Owner.objects.create(dog=data["dog_name"])
           type = Owner.objects.create(type=data["type"])
           owner = Owner.objects.create(name=data["owner_name"])
 
