@@ -34,3 +34,24 @@ class DogView(View):
         return JsonResponse({"message" : "정보등록완료"}, status = 201)
     
     
+class DogandOwnerView(View):
+    def get(self, request):
+      result = []
+      dogs = Dog.objects.all()
+      
+      for dog in dogs:
+          owner = Owner.objects.get(id=dog.id)
+          
+          result.append({
+              "id" : owner.id,
+              "first_name" : owner.first_name,
+              "age" : owner.age,
+              "dog" : {
+                "id" : dog.id, 
+                "name" : dog.name,
+                "age" : dog.age
+              }
+          })     
+          
+      return JsonResponse({"message": result}, status=201)  
+    
