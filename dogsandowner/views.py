@@ -1,20 +1,36 @@
 import json
 
 from django.views     import View
-from .models          import Owner
+from .models          import Owner,Dog
 from django.http      import JsonResponse
 
 
 # Create your views here.
-class DogsandownerView(View):
+class OwnerView(View):
     def post(self, request):
         data = json.loads(request.body)
 
         Owner.objects.create(
-            dog=data["dog_name"],
-            type=data["type"],
-            name=data["owner_name"],
-                                
+            
+            first_name = data["first_name"],
+            last_name = data["last_name"],
+            age = data["age"]
+            
         )
         
-        return JsonResponse({"message" : "댕댕이 등록완료"}, status = 201)
+        return JsonResponse({"message" : "정보등록완료"}, status = 201)
+    
+class DogView(View):
+    def post(self,request):
+        data = json.loads(request.body)
+        
+        Dog.objects.create(
+            name = data["name"],
+            age = data["age"],
+            owner_id = data["owner_id"]
+            
+        )
+        
+        return JsonResponse({"message" : "정보등록완료"}, status = 201)
+    
+    
