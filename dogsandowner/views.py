@@ -54,5 +54,4 @@ class DogandOwnerView(View):
               }
           })     
           
-      return JsonResponse({"message": result}, status=201)  
-    
+      return JsonResponse({"message": result}, status=200)
