@@ -43,8 +43,9 @@ class DogandOwnerView(View):
           owner = Owner.objects.get(id=dog.id)
           
           result.append({
-              "id" : owner.id,
-              "first_name" : owner.first_name,
+              "id" : dog.owner.id,
+              "first_name" : dog.owner.first_name,
+              "last_name" : dog.owner.last_name,
               "age" : owner.age,
               "dog" : {
                 "id" : dog.id, 
